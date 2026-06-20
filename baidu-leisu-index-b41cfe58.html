@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>雷速 · 资料整理与信息索引说明</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f7f5f0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: #2e2b27;
+            line-height: 1.7;
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 800px;
+            width: 100%;
+            background: #fefcf8;
+            border-radius: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.03);
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        /* 主视觉 / 标题区 */
+        .hero {
+            margin-bottom: 2.2rem;
+            border-bottom: 1px solid #e6e0d4;
+            padding-bottom: 1.8rem;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #1f1b16;
+            margin-bottom: 0.3rem;
+        }
+        .hero .sub {
+            font-size: 1rem;
+            color: #706a60;
+            border-left: 4px solid #c5b9a8;
+            padding-left: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        /* 卡片区 (用途 + 适合人群) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.2rem 0 2rem;
+        }
+        .info-card {
+            background-color: #f9f6f0;
+            border-radius: 18px;
+            padding: 1.6rem 1.4rem 1.8rem;
+            transition: background 0.2s;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+        }
+        .info-card:hover {
+            background-color: #f4efe6;
+        }
+        .info-card h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #3b352e;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .info-card h2::before {
+            content: "📋";
+            font-size: 1.2rem;
+            margin-right: 0.2rem;
+            display: inline-block;
+        }
+        .info-card:nth-child(2) h2::before {
+            content: "👤";
+        }
+        .info-card p, .info-card ul {
+            font-size: 0.95rem;
+            color: #4a443b;
+        }
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.4rem;
+        }
+        .info-card li {
+            margin-bottom: 0.3rem;
+            padding-left: 1.1rem;
+            position: relative;
+        }
+        .info-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #a3927e;
+        }
+
+        /* 文本段落 / 引用 / 提示框 */
+        .content-block {
+            margin: 1.8rem 0;
+        }
+        .content-block p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .blockquote {
+            background: #f3efe8;
+            border-left: 5px solid #b8aa96;
+            padding: 1rem 1.4rem;
+            margin: 1.8rem 0 2rem;
+            border-radius: 0 12px 12px 0;
+            color: #3f3a32;
+            font-style: normal;
+            font-size: 0.98rem;
+        }
+        .blockquote strong {
+            font-weight: 600;
+            color: #2c251e;
+        }
+
+        .tip-box {
+            background: #edeadf;
+            border-radius: 20px;
+            padding: 1.4rem 1.6rem;
+            margin: 2rem 0 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            border: 1px solid #dbd3c5;
+        }
+        .tip-box .tip-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #7b6e5b;
+        }
+        .tip-box p {
+            margin: 0;
+            font-size: 0.98rem;
+        }
+
+        .link-sentence {
+            background: #faf7f0;
+            padding: 1rem 1.4rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.6rem 0 0.2rem;
+            font-size: 0.98rem;
+            border: 1px solid #e3dbce;
+        }
+        .link-sentence a {
+            color: #3a5a78;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b7cbd9;
+        }
+        .link-sentence a:hover {
+            color: #1c3c58;
+            border-bottom-color: #1c3c58;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.4rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e2d9cd;
+        }
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #332d25;
+            margin-bottom: 0.8rem;
+        }
+        .faq-item {
+            margin-bottom: 0.7rem;
+        }
+        .faq-question {
+            font-weight: 500;
+            color: #4c443a;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        .faq-answer {
+            color: #5f574b;
+            font-size: 0.92rem;
+            padding-left: 0.4rem;
+            border-left: 2px solid #d6cdbd;
+            padding-left: 0.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem 2rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .blockquote {
+                padding: 0.8rem 1rem;
+            }
+            .tip-box {
+                padding: 1rem 1.2rem;
+            }
+            .link-sentence {
+                padding: 0.7rem 1rem;
+                font-size: 0.92rem;
+            }
+        }
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .info-card {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1>索引 · 笔记 · 信息片段</h1>
+        <div class="sub">从资料整理的角度理解 <span style="font-weight:500;">雷速</span> 的定位</div>
+    </div>
+
+    <!-- 用途卡片 + 适合人群卡片 (并列) -->
+    <div class="card-grid">
+        <div class="info-card">
+            <h2>用途卡片</h2>
+            <p>日常信息收集中，<strong>雷速</strong> 被用作一个轻量的内容索引节点。它适合承载：</p>
+            <ul>
+                <li>分类条目与快速回溯链接</li>
+                <li>短文本备忘与主题聚合</li>
+                <li>常用参考资源的整理入口</li>
+                <li>非结构化笔记的临时容器</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h2>适合人群</h2>
+            <p>更偏向对信息做减法、习惯把零散片段归档的人：</p>
+            <ul>
+                <li>需要固定锚点保存参阅资料的读者</li>
+                <li>希望将一手信息做初步归类的使用者</li>
+                <li>倾向于简洁书签式管理的浏览者</li>
+                <li>对页面加载轻量有偏好的整理者</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然段落 + 引用块 -->
+    <div class="content-block">
+        <p>在网络资料日益碎片化的今天，一个不堆砌功能的索引页反而更有留存价值。从信息整理的角度出发，<strong>雷速</strong> 更接近一个「静态提纲」——它不试图替代搜索或数据库，而是为高频使用的信息提供一个稳定的落点。无论是一条备忘、一组常用链接，还是一类话题的快速入口，都能以最朴素的卡片或清单呈现。</p>
+    </div>
+
+    <div class="blockquote">
+        <strong>整理思路</strong> · 与其让信息散落在不同平台的收藏夹里，不如在一个独立的页面上做轻量的聚合。雷速所扮演的角色就是那个「索引首页」：没有多余动态加载，打开即见，改起来也直接。
+    </div>
+
+    <!-- 提示框 (嵌入自然链接) -->
+    <div class="tip-box">
+        <span class="tip-label">⏺ 索引提示</span>
+        <p>如果你也在寻找一个可以自定义收藏结构的轻页面，不妨直接从 <a href="https://baidu-leisu.com" style="color:#2b4b66; text-decoration:underline; text-underline-offset:3px; font-weight:500;">雷速</a> 开始。它本身就是一个可直接编辑的静态页面，适合用来存放你整理好的条目、短链接或者笔记索引。把构思写成卡片，把链接放进句子，剩下的就是按你的节奏去更新。</p>
+    </div>
+
+    <!-- 另外一个自然链接句子 (不重复使用"进入"等词汇) -->
+    <div class="link-sentence">
+        📌 在处理日常信息流时，将重要的参考页收进 <a href="https://baidu-leisu.com">雷速</a> 的列表里，可以减少反复查找的损耗。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>常见思路 · 简短说明</h3>
+        <div class="faq-item">
+            <span class="faq-question">雷速 适合放什么类型的内容？</span>
+            <div class="faq-answer">比较适合篇幅不长、需要快速定位的整理型内容，比如主题链接、工具清单、短篇笔记或者常用索引。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">可以把它当作个人主页吗？</span>
+            <div class="faq-answer">可以，它的结构本身就偏向静态卡片与文本，稍加调整就可以作为一份轻量级的个人信息索引页使用。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">页面内容需要频繁更新吗？</span>
+            <div class="faq-answer">按需更新即可。它更接近一个常改常新的条目板，没有强制节奏，适合随意打理。</div>
+        </div>
+    </div>
+
+    <!-- 极简页脚 / 版本微标注 (不抢眼) -->
+    <div style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #ede7dd; font-size: 0.75rem; color: #a19789; text-align: center; letter-spacing: 0.02em;">
+        <span>索引卡片 · 信息整理说明</span>
+    </div>
+
+</div>
+</body>
+</html>
