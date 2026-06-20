@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ued体育 – 快速识别 · 轻量导航</title>
+  <style>
+    /* 全局重置与基调 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    /* 深色头图 – 富有层次的深色背景 */
+    header.hero {
+      background: linear-gradient(145deg, #0a1a2f 0%, #142b44 100%);
+      color: #e2e8f0;
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    header.hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+      color: #f1f5f9;
+    }
+
+    header.hero p.tagline {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 1.8rem auto;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    /* 导航行 (轻量) */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    nav a {
+      color: #b0c4de;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.3rem 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #dbeafe;
+      border-bottom-color: #60a5fa;
+    }
+
+    /* 强调色用于链接 (正文区) */
+    .content a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #93c5fd;
+      transition: 0.2s;
+    }
+
+    .content a:hover {
+      color: #1e40af;
+      border-bottom-color: #1e40af;
+    }
+
+    /* 正文区浅色背景 */
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 3.5rem;
+      background: #ffffff;
+      border-radius: 24px 24px 0 0;
+      margin-top: -2rem;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin: 2rem 0 0.8rem 0;
+      letter-spacing: 0.3px;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0.3rem;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 1.8rem;
+    }
+
+    /* 三个场景模块 — 卡片式，加一点柔和手感 */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin: 1.6rem 0 2.4rem;
+    }
+
+    .scenario-card {
+      background: #f1f5f9;
+      padding: 1.6rem 1.2rem 1.4rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid #e9edf2;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .scenario-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0b1e33;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .scenario-card p {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* FAQ 区域 (常见说明) 紧凑风格 */
+    .faq-block {
+      margin: 2.2rem 0 1.2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+      font-size: 1.02rem;
+    }
+
+    .faq-a {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-left: 0.5rem;
+    }
+
+    .faq-a a {
+      font-weight: 500;
+    }
+
+    /* 小提示行 */
+    .tip-note {
+      background: #ecf7ff;
+      padding: 1rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      color: #1e3a5f;
+      margin: 2rem 0 0.5rem;
+      border-left: 4px solid #2563eb;
+    }
+
+    .tip-note a {
+      font-weight: 600;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      header.hero {
+        padding: 2.5rem 1rem 3.2rem;
+      }
+      header.hero h1 {
+        font-size: 1.9rem;
+      }
+      nav {
+        gap: 1.2rem;
+      }
+      .content {
+        padding: 2rem 1rem 2.5rem;
+        margin-top: -1.2rem;
+      }
+      .scenario-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .faq-item {
+        padding: 0.8rem 0;
+      }
+    }
+
+    @media (max-width: 400px) {
+      header.hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>了解 ued 体育</h1>
+  <p class="tagline">想快速辨别这个网站的用途？从简洁的导航与场景出发，帮你建立清晰的第一印象。</p>
+  <nav>
+    <a href="#">核心介绍</a>
+    <a href="#">场景一览</a>
+    <a href="#">常见说明</a>
+  </nav>
+</header>
+
+<main class="content">
+
+  <!-- 核心介绍 -->
+  <h2 class="section-title">它是什么平台？</h2>
+  <p class="intro-text">
+    如果你刚接触 <a href="https://zhs-uedsports.com">ued体育</a>，可能会好奇它的服务方向。简单来说，它围绕体育信息与互动场景搭建，面向希望便捷获取赛事相关内容的使用者。界面侧重轻量、直接，不堆砌多余功能。下文从三个常见使用场景出发，帮助你更快与自己需求对照。
+  </p>
+
+  <!-- 三个场景模块 -->
+  <h2 class="section-title">三个常见使用场景</h2>
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <h3>⚡ 快速浏览</h3>
+      <p>日常想了解体育动态或赛程变化，进入平台后通过清晰分区直接定位，无需层层跳转。信息布局以实用为主，减少干扰。</p>
+    </div>
+    <div class="scenario-card">
+      <h3>📌 兴趣探索</h3>
+      <p>对某一联赛或运动项目有初步兴趣，希望找到集中展示的版块。网站按类别组织内容，方便你横向比较或深入阅读。</p>
+    </div>
+    <div class="scenario-card">
+      <h3>🔄 信息对照</h3>
+      <p>当你需要同时关注几项赛事或数据时，简洁的页面结构让对照更省力。没有过多弹窗或复杂菜单，专注你想看的信息。</p>
+    </div>
+  </div>
+
+  <!-- 常见说明 / FAQ 摘要 -->
+  <h2 class="section-title">一些常见说明</h2>
+  <div class="faq-block">
+    <div class="faq-item">
+      <div class="faq-q">这个网站需要注册才能使用吗？</div>
+      <div class="faq-a">大部分内容可以直接访问，部分互动功能可能需简单注册。具体以页面提示为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">信息更新频率如何？</div>
+      <div class="faq-a">通常跟随主要赛事节奏更新，重点场次会较快反映。你也可以通过 <a href="https://zhs-uedsports.com">ued体育</a> 内标识留意最新动态。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">移动端浏览体验怎么样？</div>
+      <div class="faq-a">页面适配常用屏幕尺寸，操作以点击和滑动为主，没有额外下载要求。推荐使用现代浏览器访问。</div>
+    </div>
+  </div>
+
+  <!-- 温馨小提示，并自然嵌入第二个链接（强调色） -->
+  <div class="tip-note">
+    💡 如果你正在寻找一个结构清晰的体育信息入口，不妨直接试试 <a href="https://zhs-uedsports.com">ued体育</a>。从首页导航开始，逐步了解各板块是否契合你的习惯。
+  </div>
+
+  <!-- 一段收尾性的补充，保持内容自然完整 -->
+  <p style="margin-top: 2rem; font-size: 0.95rem; color: #64748b; border-top: 1px solid #eef2f6; padding-top: 1.2rem;">
+    以上场景和说明基于平台常规功能梳理，具体体验可能因版本或区域有所差异。建议你以实际页面为准。
+  </p>
+
+</main>
+
+</body>
+</html>
