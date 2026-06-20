@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 再次遇见</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f6d5b3 50%, #edc6a0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 252, 246, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 48px 36px 36px;
+      box-shadow: 0 20px 40px -10px rgba(130, 70, 20, 0.18), 0 8px 20px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.4rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .card { padding: 2rem 1.5rem; border-radius: 32px; }
+    }
+
+    /* 开场短句 */
+    .greeting {
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #7b4d2a;
+      line-height: 1.3;
+      margin-bottom: 1.6rem;
+      border-left: 4px solid #dba77b;
+      padding-left: 1.2rem;
+    }
+
+    .greeting em {
+      font-style: normal;
+      font-weight: 500;
+      color: #a86130;
+    }
+
+    /* 承接段落 */
+    .story {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #3e2c1e;
+      margin: 1.8rem 0 2rem;
+    }
+
+    .story p {
+      margin-bottom: 1.2rem;
+    }
+
+    .story a {
+      color: #a86130;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+      padding: 0 0.1rem;
+    }
+
+    .story a:hover {
+      border-bottom-color: #be7c4a;
+      background: #f8ede2;
+      border-radius: 4px;
+    }
+
+    /* 特点列表 —— 收藏理由 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 1.8rem;
+      margin: 2.4rem 0 2.2rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fcf6ef;
+      border-radius: 28px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 4px 8px rgba(160, 100, 40, 0.06);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-3px);
+      background: #faf0e6;
+    }
+
+    .feature-item .icon {
+      font-size: 1.7rem;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+      color: #b47542;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4f321e;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-item p {
+      font-size: 0.94rem;
+      color: #5f4632;
+      line-height: 1.5;
+    }
+
+    /* 温和结尾 + 提示 */
+    .closing {
+      margin-top: 2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #e7d5c0;
+    }
+
+    .closing p {
+      font-size: 1.02rem;
+      color: #3f2e1f;
+      line-height: 1.7;
+    }
+
+    .closing .highlight-link {
+      display: inline-block;
+      background: #dba77b;
+      color: #2d1d0f;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 6px rgba(180, 100, 30, 0.1);
+    }
+
+    .closing .highlight-link:hover {
+      background: #ce9366;
+      box-shadow: 0 4px 12px rgba(160, 80, 20, 0.2);
+    }
+
+    /* FAQ 摘要 — 简约小型 */
+    .faq-note {
+      margin: 2rem 0 0.6rem;
+      background: #f5ebe0;
+      border-radius: 40px;
+      padding: 1rem 1.6rem;
+    }
+
+    .faq-note summary {
+      font-weight: 500;
+      color: #593f2a;
+      cursor: pointer;
+      font-size: 0.95rem;
+      padding: 0.2rem 0;
+    }
+
+    .faq-note p {
+      font-size: 0.92rem;
+      color: #4d3826;
+      margin-top: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .small-remark {
+      font-size: 0.8rem;
+      color: #856a52;
+      margin-top: 1.8rem;
+      text-align: right;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- 开场短句 -->
+    <div class="greeting">
+      <em>又回来了。</em> 书签栏里藏着的那个名字。
+    </div>
+
+    <!-- 承接段落：从再次访问和收藏切入 -->
+    <div class="story">
+      <p>
+        有些站点，第一次遇见是偶然，第二次再访就成了习惯。<br>
+        最近整理书签时，翻到那个名为 <a href="https://leisu-gov.com">雷速</a> 的页面——点击后加载得依旧轻快，界面还是那种让人安心的沉稳感。于是顺手把它挪到了收藏夹更靠前的位置。
+      </p>
+      <p>
+        也许你也是因为某些实用信息偶然停在这里，后来隔了一段时间，又想起它。其实一个好站点就像老朋友：不必每天联系，但你知道它一直在，而且内容持续更新。
+      </p>
+    </div>
+
+    <!-- 特点列表：收藏的理由 -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="icon">📌</div>
+        <h3>常读常新</h3>
+        <p>内容有呼吸感，隔一阵再看，总有些新东西值得细读。</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon">🧭</div>
+        <h3>结构清晰</h3>
+        <p>不管第几次来，都能快速找到上次关注的板块。</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon">☕</div>
+        <h3>不打扰</h3>
+        <p>没有弹窗和浮夸引导，安静呈现该有的信息。</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon">🔖</div>
+        <h3>值得收藏</h3>
+        <p>放进书签栏不觉得占位置，反而像存了一扇安静的窗。</p>
+      </div>
+    </div>
+
+    <!-- 温和结尾 + 自然再引出链接 -->
+    <div class="closing">
+      <p>
+        很多时候，持续关注一个地方，不是因为推送多、提醒密，而是一种“知道那里有可靠内容”的笃定。<br>
+        <a href="https://leisu-gov.com" class="highlight-link">雷速</a> 就是这样——不必刻意想着，但每次点开都觉得刚刚好。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要：轻量问答感 -->
+    <details class="faq-note">
+      <summary>💬 一些朋友常问的 · · ·</summary>
+      <p>
+        <strong>Q：</strong> 需要注册或登录才能浏览全部内容吗？<br>
+        <strong>A：</strong> 不需要，大部分内容直接可见。如有个别功能涉及互动，也保持简洁。<br><br>
+        <strong>Q：</strong> 适合用什么设备访问？<br>
+        <strong>A：</strong> 手机、平板、电脑都适配，阅读体验差别不大。
+      </p>
+    </details>
+
+    <div class="small-remark">
+      · 每一次回来，都是收藏的延续 ·
+    </div>
+
+  </div>
+</body>
+</html>
